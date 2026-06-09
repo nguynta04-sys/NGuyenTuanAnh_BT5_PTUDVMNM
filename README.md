@@ -244,33 +244,82 @@ nano frontend/index.html
 docker-compose up -d
 ```
 
+<img width="1918" height="1080" alt="image" src="https://github.com/user-attachments/assets/9bdbe678-4c62-4eba-b9ec-497937d5d28e" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bdab76b3-7644-422a-95f0-5786bdf66db3" />
+
  + Cập nhật danh sách phần mềm
 ```
 sudo apt update
 ```
 <img width="1920" height="915" alt="image" src="https://github.com/user-attachments/assets/1512ccc2-00b2-43e7-ae83-bd0c1325b6e4" />
 
+ + Khởi tạo bảng dữ liệu trong MariaDB
+```
+sudo docker exec -it mariadb_service mysql -uroot -prootpassword -e "CREATE DATABASE IF NOT EXISTS monitor_db; USE monitor_db; CREATE TABLE IF NOT EXISTS realtime_data (id INT AUTO_INCREMENT PRIMARY KEY, value FLOAT NOT NULL, date_time DATETIME NOT NULL);"
+```
+<img width="1916" height="1066" alt="image" src="https://github.com/user-attachments/assets/ec6858cb-e555-48dd-8d63-be2b635a39a5" />
 
+- Cấu hình Node-RED lấy dữ liệu và Alert Telegram
+<img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/77c0dd64-5461-4b7e-a4e8-de8b70215799" />
 
+- Cấu hình kết nối MariaDB
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b811c16b-ad3e-464b-8501-cc956a030dc4" />
 
+- Cấu hình kết nối InfluxDB
+<img width="1901" height="1075" alt="image" src="https://github.com/user-attachments/assets/ed391d45-f5d5-4818-9751-10f240722d46" />
 
+-Cấu hình URL Telegram Alert
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bbef3773-aea0-428d-aaa4-bb7f1f47fa05" />
 
+- Tiếp theo thêm các con bot và tạo group...
+<img width="1901" height="1080" alt="image" src="https://github.com/user-attachments/assets/e3003fdd-e400-40c4-9340-4fc5660230d6" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ffc3b19d-0d05-4f7d-ae8b-f70c6d749e8d" />
 
+- truy cập vào grafana
+```
+http://192.168.146.135:3000
+```
+<img width="1920" height="1076" alt="image" src="https://github.com/user-attachments/assets/0817efe7-7c50-4861-88ff-d8ecad134c3e" />
 
+- Thêm nguồn dữ liệu InfluxDB vào Grafana
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/97ab327c-05c2-4c67-ba43-f9fbf63fbf7c" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/874af431-f1e9-4585-b191-9561a896faae" />
 
+- Tạo Biểu đồ và Lấy Link nhúng (Embed Link)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e24da555-1cf6-41a0-9cda-f55e669bf59a" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/508ebff9-7201-44ba-823d-d21bff34d5c4" />
 
+## xuất/nhập Container ra file nén
+```
+sudo docker-compose down -v
+```
+<img width="1920" height="451" alt="image" src="https://github.com/user-attachments/assets/ca02e112-0e04-43b5-b889-08e133b136a0" />
 
+- lệnh xóa luôn cái thư mục code app-monitor
+```
+rm -rf app-monitor
+```
 
+Giải nén file để lấy lại toàn bộ thư mục code và cấu hình
+```
+tar -xzvf app-monitor-backup.tar.gz
+```
+<img width="1920" height="352" alt="image" src="https://github.com/user-attachments/assets/a5d51cdb-6763-42be-99b1-709d811da2c5" />
 
+- Di chuyển lại vào thư mục vừa giải nén
+```
+cd app-monitor
+```
 
+- Dựng lại toàn bộ cụm Container lên chạy ngầm
+```
+sudo docker-compose up -d
+```
+<img width="1920" height="451" alt="image" src="https://github.com/user-attachments/assets/223d3484-271d-46e1-b940-ccfdb1ff2f63" />
 
-
-
-
-
-
-
-
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cfedec97-b9e6-48de-9721-811edebadee8" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bc565205-7030-4ce9-8151-0a6b98dc5a4a" />
 
 
 
